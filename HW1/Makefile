@@ -1,6 +1,6 @@
 CC	= cc
 CXX	= c++
-XFLAGS	= -O2 -pipe -fPIC -fPIE -I. -g3 -pedantic -Wall -Wextra
+XFLAGS	= -Og -pipe -fPIC -fPIE -I. -g3 -pedantic -Wall -Wextra
 #DBG	= -fsanitize=undefined,integer,nullability -fno-omit-frame-pointer
 CFLAGS	= $(XFLAGS) $(DBG) -std=c99
 CXXFLAGS =  $(XFLAGS) $(DBG) -std=c++17
