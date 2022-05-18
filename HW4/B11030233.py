@@ -2,16 +2,15 @@
 # -*- coding: utf-8 -*-
 
 # RSA Encryption & Decryption
-from lib2to3.refactor import MultiprocessingUnsupported
 import random
-from re import M
 import string
 import math
 import sys
 import os
 import base64
 
-primes = [  2,   3,   5,   7,  11,  13,  17,  19,  23,  29,  31,  37,  41,  43,  47,
+# Small primes
+primes = [  3,   5,   7,  11,  13,  17,  19,  23,  29,  31,  37,  41,  43,  47, # Skipped 2
     53,  59,  61,  67,  71,  73,  79,  83,  89,  97, 101, 103, 107, 109, 113,
     127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197,
     199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281,
@@ -49,7 +48,7 @@ if __name__ == '__main__':
     def is_prime_rabin_miller(n):
         if n == 2:
             return True
-        if n % 2 == 0:
+        if n % 2 == 0: 
             return False
         s = n - 1
         t = 0
@@ -85,7 +84,7 @@ if __name__ == '__main__':
             t = t + n
         return t
     
-    def intmodpow(a, p, mod): # Square and Multiply Algorithm
+    def intmodpow(a, p, mod): # Square and Multiply Algorithm with Modulo
         o = 1
         if(p == 0):
             return o
@@ -121,7 +120,7 @@ if __name__ == '__main__':
 
     elif sys.argv[1] == '-e':
         if(len(sys.argv) < 5):
-            print("python B11030233.py -e N e")
+            print("?Argument Error")
             exit(1)
         m = int.from_bytes(sys.argv[2].encode('utf-8'), 'big')
         N = int(sys.argv[3])
@@ -133,6 +132,7 @@ if __name__ == '__main__':
     elif sys.argv[1] == '-d':
         if(not (len(sys.argv) == 5 or (sys.argv[2] == '-CRT' and len(sys.argv) == 7))):
             print("?Argument Error")
+            exit(1)
         else:
             if(sys.argv[2] == '-CRT'): # Utilize Chinese Remainder Theorem
                 c = int.from_bytes(base64.b64decode(sys.argv[3].encode('utf-8')), 'big')
